@@ -1,0 +1,33 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>APPID test</title>
+  </head>
+  <body>
+
+    <script src="https://cdn.appid.cloud.ibm.com/appid-0.3.0.min.js"></script>
+    <script>
+      const appID = new AppID();
+      const init = async function() {
+        console.log('init')
+        await appID.init({
+          clientId: 'b40e9e08-16f7-4722-9ed0-3b088a50a0fb',
+          discoveryEndpoint: 'https://us-south.appid.cloud.ibm.com/oauth/v4/62538d6f-cea8-4e49-9267-fe29c0ec16d3/.well-known/openid-configuration'
+        });
+        console.log('done')
+      }
+
+      const login = async function() {
+        console.log('login')
+        const tokens = await appID.signin();
+        console.log(tokens)
+      }
+      init()
+
+    </script>
+    <button onclick="login()">LOGIN</button>
+
+  </body>
+</html>
